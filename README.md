@@ -26,15 +26,29 @@ To set up the project, follow these steps:
    Use Maven to download and install the required dependencies:
    ```bash
    mvn install
-   
-4. Usage: 
+
+## Usage
 To run the automated tests, execute the following command:
-    ```bash
+   ```bash
    mvn clean test
-   
-5. Features:
+   ```
+## Features:
    - Automated UI tests using Selenium WebDriver.
    - Detailed test reporting with ExtentReports.
    - Automatic browser driver management with WebDriverManager.
    - Support for TestNG test suite configuration.
+## Dependencies:
+The project relies on several key libraries, as defined in the pom.xml:
 
+   - TestNG: A testing framework for managing and executing tests.
+   - Selenium Java: A powerful suite for browser automation.
+   - ExtentReports: A reporting library for creating interactive test reports.
+   - WebDriverManager: A library that manages browser drivers automatically.
+## Build Configuration:
+The project is configured to use the Maven Surefire Plugin for executing tests defined in the testng.xml file:
+## Contributing
+Contributions are welcome! If you have suggestions or improvements, please create an issue or submit a pull request.
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+## Contact
+For inquiries, feel free to reach out at kamleshmuthu5@gmail.com.
