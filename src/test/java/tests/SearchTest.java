@@ -1,15 +1,12 @@
 package tests;
 
 import dataProviders.CategoriesDataProvider;
-import org.testng.annotations.AfterGroups;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.CategoriesPage;
 import pages.SearchPage;
 import utilities.BaseTest;
-import utilities.DriverManager;
 
 public class SearchTest extends BaseTest {
     SoftAssert softAssert;
@@ -72,8 +69,9 @@ public class SearchTest extends BaseTest {
                 + "but actual: " + searchPage.getSelectedFilterAttributeValue());
 //        6. Input "javascript" in the search bar and search with the keyword
 //        7. Go back to Mercari top page (https://jp.mercari.com/)
-        searchPage = searchPage.searchCategory("javascript");
+        searchPage.searchCategory("javascript");
         driver.get(properties.getProperty("baseURL"));
+        searchPage = new SearchPage();
 
 //        Verify there are 3 browsing histories
 //        9. Verify the latest browsing history is showing correctly (javascript, Computers & Technology / javascript, コンピュータ/IT)

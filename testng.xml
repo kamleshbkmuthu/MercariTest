@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Mercari Test Suite" verbose="1">
+    <listeners>
+        <!-- Add your ExtentReportListener -->
+        <listener class-name="utilities.ExtentReportListener" />
+    </listeners>
+
+    <test name="Search Test Execution">
+        <classes>
+            <class name="tests.SearchTest" />
+        </classes>
+    </test>
+</suite>
