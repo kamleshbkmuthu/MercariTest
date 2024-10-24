@@ -1,15 +1,17 @@
 package utilities;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.SearchPage;
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 public class BaseTest {
@@ -24,8 +26,22 @@ public class BaseTest {
         driver.get(properties.getProperty("baseURL"));
         searchPage = new SearchPage();
     }
+    public static String captureScreenshot(WebDriver driver, String screenshotName) {
+        // Create a timestamp to make the screenshot filename unique
+        String timestamp = new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
+        String screenshotPath = System.getProperty("user.dir")+"//screenshots/" + screenshotName + "_" + timestamp + ".png";
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            // Copy the file to the desired location
+            FileUtils.copyFile(srcFile, new File(screenshotPath));
+            System.out.println("Screenshot saved at: " + screenshotPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return screenshotPath; // Return the path of the screenshot
+    }
     // After all tests, close the browser (AfterClass)
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         DriverManager.closeDriver();
     }
