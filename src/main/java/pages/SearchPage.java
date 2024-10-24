@@ -40,11 +40,10 @@ public class SearchPage extends BasePage{
         clickElement(searchBar);
     }
 
-    public SearchPage searchCategory(String category) {
+    public void searchCategory(String category) {
         clickElement(searchBar);
         sendKeys(searchWithFilter,category);
         searchWithFilter.sendKeys(Keys.ENTER);
-        return new SearchPage();
     }
 
     public CategoriesPage selectCategory(String category) {
